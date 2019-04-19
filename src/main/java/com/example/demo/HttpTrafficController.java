@@ -19,7 +19,7 @@ public class HttpTrafficController {
         System.out.println("httpTraffic:" + httpIncoming.getRequestURL());
         HttpTraffic httpTraffic = convertIncomingToDBObject(httpIncoming);
 
-       // httpRepo.save(httpTraffic);
+        httpRepo.save(httpTraffic);
         return "greetings";
     }
 
