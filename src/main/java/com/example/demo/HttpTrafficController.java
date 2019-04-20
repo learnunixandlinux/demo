@@ -14,13 +14,21 @@ public class HttpTrafficController {
     @Autowired
     HttpServiceRepository httpRepo;
 
-    @PostMapping("/post")
+    @PostMapping("/http/request/post")
     public @ResponseBody String postTransaction(@RequestBody HttpIncoming httpIncoming) {
-        System.out.println("httpTraffic:" + httpIncoming.getRequestURL());
-        HttpTraffic httpTraffic = convertIncomingToDBObject(httpIncoming);
+        String modifiedRequestPayload = "";
+        try {
+            HttpTraffic httpTraffic = convertIncomingToDBObject(httpIncoming);
+            httpRepo.save(httpTraffic);
+            modifiedRequestPayload = modifiedRequest(httpTraffic.getTransactionId());
+        } catch (Exception e) {
+            return "";
+        }
+        return modifiedRequestPayload;
+    }
 
-        httpRepo.save(httpTraffic);
-        return "greetings";
+    private String modifiedRequest(String transactionId) {
+        return httpRepo.findByTransactionId(transactionId).getModifiedRequestPayload() + "null";
     }
 
     private HttpTraffic convertIncomingToDBObject(HttpIncoming httpIncoming) {
