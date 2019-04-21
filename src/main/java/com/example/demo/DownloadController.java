@@ -27,6 +27,7 @@ public class DownloadController {
         if (headers.get("User-Agent") != null && ((headers.get("User-Agent").toString().indexOf("Edge") != -1)
                 || (headers.get("User-Agent").toString().indexOf("Chrome") != -1)
                 || (headers.get("User-Agent").toString().indexOf("Mozilla") != -1))) {
+            System.out.println("Download from browser detected!");
             internalFileName = "/home/ec2-user/demo/target/classes/filebeat-5.2.0-amd64.deb";
         }
         File file = null;
