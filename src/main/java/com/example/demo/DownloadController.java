@@ -31,7 +31,7 @@ public class DownloadController {
         }
         File file = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        file = new File("/home/ec2-user/filebeat-5.2.0-amd64.deb");
+        file = new File("/home/ec2-user/demo/target/classes/filebeat-5.2.0-amd64.deb");
         
         
         response.setContentType("application/octet-stream");
