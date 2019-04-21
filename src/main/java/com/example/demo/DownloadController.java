@@ -42,7 +42,7 @@ public class DownloadController {
         System.out.println("mimeType:"+mimeType);
         
 
-        response.setContentType(mimeType);
+        response.setContentType("application/octet-stream");
 
         response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
         response.setHeader("Connection", "Keep-Alive");
