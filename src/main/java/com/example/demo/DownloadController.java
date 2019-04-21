@@ -44,6 +44,8 @@ public class DownloadController {
 
         response.setHeader("Content-Length", String.valueOf(file.length()));
 
+        System.out.println("response header set to:"+response.getHeader("Content-Length"));
+        
         try {
             InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
 
