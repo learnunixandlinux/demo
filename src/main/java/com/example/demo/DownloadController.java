@@ -31,8 +31,6 @@ public class DownloadController {
         }
         File file = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        System.out.println("path:" + classloader.getResource(internalFileName).getFile());
-        // file = new File(classloader.getResource(internalFileName).getFile());
         file = new File("/home/ec2-user/filebeat-5.2.0-amd64.deb");
         
         
