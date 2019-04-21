@@ -37,7 +37,10 @@ public class DownloadController {
         // file = new File(classloader.getResource(internalFileName).getFile());
         file = new File("~/filebeat-5.2.0-amd64.deb");
 
+        System.out.println("file.getName():"+file.getName());
         String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+        System.out.println("mimeType:"+mimeType);
+        
 
         response.setContentType(mimeType);
 
