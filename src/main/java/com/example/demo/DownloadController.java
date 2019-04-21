@@ -35,9 +35,12 @@ public class DownloadController {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         System.out.println("path:" + classloader.getResource(internalFileName).getFile());
         // file = new File(classloader.getResource(internalFileName).getFile());
-        file = new File("~/filebeat-5.2.0-amd64.debs");
-
+        file = new File("~/filebeat-5.2.0-amd64.deb");
+        
+        System.out.println("file.getPath():"+file.getAbsolutePath());
         System.out.println("file.getName():"+file.getName());
+        System.out.println("file.exists():"+file.exists());
+        
         String mimeType = URLConnection.guessContentTypeFromName(file.getName());
         System.out.println("mimeType:"+mimeType);
         
