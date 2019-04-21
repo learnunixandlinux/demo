@@ -40,8 +40,9 @@ public class DownloadController {
         response.setContentType(mimeType);
 
         response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
+        response.setHeader("Connection", "Keep-Alive");
 
-        //response.setContentLength((int) file.length());
+        response.setHeader("Content-Length", String.valueOf(file.length()));
 
         try {
             InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
