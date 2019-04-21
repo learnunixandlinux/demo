@@ -33,6 +33,7 @@ public class DownloadController {
         File file = null;
 
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        System.out.println("path:"+classloader.getResource(internalFileName).getFile());
         file = new File(classloader.getResource(internalFileName).getFile());
 
         String mimeType = URLConnection.guessContentTypeFromName(file.getName());
