@@ -45,7 +45,7 @@ public class DownloadController {
 
         System.out.println("File length set to:" + String.valueOf(file.length()));
 
-        response.setHeader("Content-Length", String.valueOf(file.length()));
+        response.setHeader("Content-Length", "8929120");
 
         System.out.println("response header set to:" + response.getHeader("Content-Length"));
 
