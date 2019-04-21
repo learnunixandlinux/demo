@@ -47,5 +47,24 @@ public class DownloadController {
 
         }
     }
+    
+    @GetMapping("/shell.sh")
+    public void downloadShell(HttpServletResponse response, @RequestHeader HttpHeaders headers) {
+        String internalFileName = "/home/ec2-user/shell.sh";
+      
+        File file = new File(internalFileName);
+               
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
+        response.setHeader("Connection", "Keep-Alive");
+        response.setHeader("Content-Length", String.valueOf(file.length()));
+        try {
+            InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+
+            FileCopyUtils.copy(inputStream, response.getOutputStream());
+        } catch (IOException e) {
+
+        }
+    }
 
 }
