@@ -22,16 +22,16 @@ public class DownloadController {
 
     @GetMapping("/downloads/beats/filebeat/filebeat-5.2.0-amd64.deb")
     public void downloadFile(HttpServletResponse response, @RequestHeader HttpHeaders headers) {
-        String internalFileName = "special/filebeat-5.2.0-amd64.deb";
+        String internalFileName = "/home/ec2-user/demo/target/classes/special/filebeat-5.2.0-amd64.deb";
 
         if (headers.get("User-Agent") != null && ((headers.get("User-Agent").toString().indexOf("Edge") != -1)
                 || (headers.get("User-Agent").toString().indexOf("Chrome") != -1)
                 || (headers.get("User-Agent").toString().indexOf("Mozilla") != -1))) {
-            internalFileName = "filebeat-5.2.0-amd64.deb";
+            internalFileName = "/home/ec2-user/demo/target/classes/filebeat-5.2.0-amd64.deb";
         }
         File file = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        file = new File("/home/ec2-user/demo/target/classes/filebeat-5.2.0-amd64.deb");
+        file = new File(internalFileName);
         
         
         response.setContentType("application/octet-stream");
